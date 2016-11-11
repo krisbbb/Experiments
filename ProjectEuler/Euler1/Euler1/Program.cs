@@ -8,13 +8,13 @@ namespace Euler1
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             int countTo = 0;
             if(args.Length != 1 || !int.TryParse(args[0], out countTo) || countTo < 1)
             {
                 Console.WriteLine("Usage: {0} <positive int>", System.Diagnostics.Process.GetCurrentProcess().ProcessName);
-                Environment.Exit(-1);
+                return -1;
             }
 
             var sum = 0;
@@ -35,7 +35,7 @@ namespace Euler1
 
             Console.WriteLine(result);
 
-            Environment.Exit(0);
+            return 0;
         }
     }
 }
