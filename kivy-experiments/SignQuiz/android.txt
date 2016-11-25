@@ -1,0 +1,3 @@
+title=SignQuiz
+author=Kris
+orientation=portrait

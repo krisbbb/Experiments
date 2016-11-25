@@ -1,0 +1,52 @@
+<SignQuizGui>
+    orientation: 'vertical'
+    padding: 10
+
+    #row 0
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 10
+
+        QuizLayout:
+            id: stats
+
+        QuizLayout:
+            id: question
+
+    #row1
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 10
+
+        LayoutButton:
+            id: option0
+            on_press: root.OnPress("option0")
+
+        LayoutButton:
+            id: option1
+            on_press: root.OnPress("option1")
+
+    #row2
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 10
+
+        LayoutButton:
+            id: option2
+            on_press: root.OnPress("option2")
+
+        LayoutButton:
+            id: option3
+            on_press: root.OnPress("option3")
+
+    #row3
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 10
+
+        QuizLayout:
+            id: confirmation
+
+        LayoutButton:
+            id: confirmation
+            on_press: root.OnPress("confirmation")
