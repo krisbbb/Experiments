@@ -4,7 +4,6 @@ kivy.require('1.2.0')
 from sys import argv
 from os.path import dirname, join
 from kivy.app import App
-from kivy.uix.video import Video
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
@@ -12,13 +11,14 @@ from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import ObjectProperty
 
 from signquiz import SignQuiz
+from signquizassets import SignQuizAssets
 
 class QuizLayout(BoxLayout):
     def __init__(self, **kwargs):
         super(QuizLayout, self).__init__(**kwargs)
         self.widget = Label()
         self.add_widget(self.widget)
-    
+
     def AddWidget(self, widget):
         oldwidget = self.widget
         self.widget = widget
@@ -43,14 +43,13 @@ class SignQuizGui(BoxLayout):
 
     def __init__(self, **kwargs):
         super(SignQuizGui, self).__init__(**kwargs)
-        self.signquiz = SignQuiz()
+        self.assets = SignQuizAssets(dir = "assets")
+        self.signquiz = SignQuiz(words = self.assets.ListAssets())
         self.signquiz.SetCallback(self.SignQuizCallback)
         self.signquiz.NewQuiz()
 
     def SignQuizCallback(self, target, type, arg):
-        widget = Label(text=arg)
-        if(type == "video"):
-            widget = Video(source=arg, state='play', options={'eos': 'loop'})
+        widget = self.assets.GetAsset(type, arg)
         self.ids[target].AddWidget(widget)
         
     def OnPress(self, buttonName):
