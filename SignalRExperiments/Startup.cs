@@ -49,14 +49,14 @@ namespace WebApplication
 
             services.AddMvc();
 
+            services.AddSignalR(options =>
+            {
+                options.Hubs.EnableDetailedErrors = true;
+            });
+
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-
-            services.AddSignalR(options =>
-            {
-                options.Hubs.EnableDetailedErrors => true
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,10 +77,11 @@ namespace WebApplication
             }
 
             app.UseStaticFiles();
+
+            //app.UseIdentity();
+
             app.UseWebSockets();
             app.UseSignalR();
-
-            app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
 
