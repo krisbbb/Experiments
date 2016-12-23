@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.SignalR;
+
+//From
+//https://radu-matei.github.io/blog/signalr-core/
 
 public class ChatHub : Hub
 {
